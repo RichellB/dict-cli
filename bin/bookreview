@@ -1,4 +1,4 @@
 require "../words/word_finder.rb"
 require "../lib/cli.rb"
 
-#run
+run
