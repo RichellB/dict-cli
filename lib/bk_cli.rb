@@ -1,6 +1,18 @@
 require "pry"
 
 class CLI
+  
+  def run 
+    puts "Welcome to Today's Best Sellers!"
+    puts "Main Menu"
+    Scraper.scrape_reviews
+   
+    Book.all.each.with_index(1) do |book, i|
+      puts "#{i}: #{book.title}"
+    end
+    menu
+  end
+  
   def menu
     books = []
     puts "Please enter a book to get the full review:"
@@ -12,16 +24,7 @@ class CLI
       #menu 
     else 
       puts "Hi"
-    end
-  end
-
-  def run 
-    puts "Welcome to Today's Best Sellers!"
-    puts "Main Menu"
-    Scraper.scrape_reviews
-   
-    Book.all.each.with_index(1) do |book, i|
-      puts "#{i}: #{book.title}"
+      Scraper.scrape_book_review(title)
     end
   end
 end
