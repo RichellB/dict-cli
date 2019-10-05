@@ -8,6 +8,8 @@ require "pry"
     puts "Welcome to Today's Best Sellers!"
     puts "Main Menu"
     puts "Please enter a book to get the full review:"
+    input = get.chomp
+    
   
     html = open("https://www.kirkusreviews.com")
     doc = Nokogiri::HTML(html)
