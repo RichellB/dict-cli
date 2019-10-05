@@ -1,6 +1,7 @@
 #require "../words/word_finder.rb"
-require "../lib/cli.rb"
-require "../lib/book.rb"
-require "../lib/scraper.rb"
+require "../lib/bk_cli.rb"
+#require "../lib/book.rb"
+#require "../lib/scraper.rb"
+#"/dict-cli/lib/dict/cli.rb"
 
 CLI.new.run
