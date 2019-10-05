@@ -5,4 +5,4 @@ require "../lib/scraper.rb"
 #"/dict-cli/lib/dict/cli.rb"
 
 CLI.new.run
-CLI.new.menu
+#CLI.new.menu
