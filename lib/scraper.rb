@@ -22,8 +22,9 @@ def self.scrape_reviews
   books << book5
   book6 = doc.css(".cover-image")[5].values[2]
   books << book6
-    #book7 = doc.css(".cover-image")[0].values[2]
-    
+ #puts books
+  books.each{|bookr| Book.new(bookr)}
+ 
   end
   
 end

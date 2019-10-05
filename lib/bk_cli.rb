@@ -5,12 +5,13 @@ class CLI
     books = []
     puts "Please enter a book to get the full review:"
     input = gets.chomp
-    title = Book.all[input.to_i]
+    title = Book.all[input.to_i-1]
     
     if !title 
       puts "This book is not on the list. Please enter a valid option."
-      #nmenu 
+      #menu 
     else 
+      puts "Hi"
     end
   end
 
@@ -20,7 +21,7 @@ class CLI
     Scraper.scrape_reviews
    
     Book.all.each.with_index(1) do |book, i|
-      puts "#{i}: #{book}"
+      puts "#{i}: #{book.title}"
     end
   end
 end
