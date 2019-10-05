@@ -4,12 +4,12 @@ class CLI
   def menu
     books = []
     puts "Please enter a book to get the full review:"
-    input = get.chomp
-    title = Book.all[input.to_i-1]
+    input = gets.chomp
+    title = Book.all[input.to_i]
     
     if !title 
       puts "This book is not on the list. Please enter a valid option."
-      menu 
+      #nmenu 
     else 
     end
   end
@@ -19,7 +19,7 @@ class CLI
     puts "Main Menu"
     Scraper.scrape_reviews
    
-    book.all.each.with_index(1) do |book, i|
+    Book.all.each.with_index(1) do |book, i|
       puts "#{i}: #{book}"
     end
   end
