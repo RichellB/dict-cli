@@ -6,10 +6,10 @@ require "pry"
   
 def self.scrape_reviews
   books = []
+  #KIRKUS = 
   
   html = open("https://www.kirkusreviews.com")
   doc = Nokogiri::HTML(html)
-   # binding.pry 
   book1 = doc.css(".cover-image")[0].values[2]
   books << book1
   book2 = doc.css(".cover-image")[1].values[2]
@@ -23,8 +23,9 @@ def self.scrape_reviews
   book6 = doc.css(".cover-image")[5].values[2]
   books << book6
  #puts books
+  binding.pry
   books.each{|bookr| Book.new(bookr)}
- 
+   #doc.css(".critics-picks-item-img-ctr a").attr("href").value
   end
   
 end
