@@ -23,7 +23,6 @@ def self.scrape_reviews
   books << book5
   book6 = doc.css(".cover-image")[5].values[2]
   books << book6
- #puts books
   url = doc.css(".critics-picks-item-img-ctr a").attr("href").value
   puts url
   
@@ -35,7 +34,9 @@ def self.scrape_reviews
     
     html = open(KIRKUS_URL+book.url)
     doc = Nokogiri::HTML(html)
-    binding.pry
+    book.book_name = doc.css(".book_detail_title").text
+    book.author = doc.css(".book-author.clearfix").text.split(/[\n,]/)[5].strip
+    book.review = doc.css(".book-review-txt").text.split(/[\n,]/).join(" ")
     
   end
 end

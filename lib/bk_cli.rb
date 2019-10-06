@@ -21,7 +21,7 @@ class CLI
     
     if !book 
       puts "This book is not on the list. Please enter a valid option."
-      #menu 
+      menu 
     else 
       puts "Hi"
       Scraper.scrape_book_review(book)
