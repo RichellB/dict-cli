@@ -33,7 +33,6 @@ KIRKUS_URL = "https://www.kirkusreviews.com"
     
     html = open(KIRKUS_URL+book.url)
     doc = Nokogiri::HTML(html)
-    binding.pry
     book.book_name = doc.css(".book_detail_title span").text
     book.author = doc.css(".book-author.clearfix span")[0].text
     book.review = doc.css(".book-review-txt p").text.split(/[\n,]/).join(" ")
