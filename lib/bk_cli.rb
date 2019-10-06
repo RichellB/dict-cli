@@ -31,14 +31,15 @@ class CLI
       puts "Book Name: #{book.book_name}"
       puts "Author: #{book.author}"
       puts "Kirkus Review: #{book.review}"
-      puts "\nWould you like to see the review for another book? Please enter y for YES or n for NO:"
+      puts "\nWould you like to see the review for another book or see more books? Please enter y for YES or n for NO:"
       user_input = gets.chomp
       if user_input == 'y'
         run
         elsif user_input == 'n'
-          puts "Thanks for viewing! Goodbye"
+          puts "\nThanks for viewing! Goodbye"
         else 
-          puts "That was not a valid option. Let's try again."
+          puts "That was not a valid option. Let's try again.\n"
+          run
         end
     end
   end
