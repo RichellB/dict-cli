@@ -17,14 +17,18 @@ class CLI
     books = []
     puts "Please enter a book to get the full review:"
     input = gets.chomp
-    title = Book.all[input.to_i-1]
+    book = Book.all[input.to_i-1]
     
-    if !title 
+    if !book 
       puts "This book is not on the list. Please enter a valid option."
       #menu 
     else 
       puts "Hi"
-      Scraper.scrape_book_review(title)
+      Scraper.scrape_book_review(book)
+      puts "Here are the review details for #{book.title}:"
+      puts "Book Name: #{book.book_name}"
+      puts "Author: #{book.author}"
+      puts "Kirkus Review: #{book.review}"
     end
   end
 end
