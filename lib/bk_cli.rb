@@ -9,14 +9,13 @@ class CLI
     puts " "
     Scraper.scrape_reviews
    
-    Book.all.each.with_index(1) do |book, i|
+    Book.each.with_index(1) do |book, i|
       puts "#{i}: #{book.title}"
     end
     menu
   end
   
   def menu
-    books = []
     puts "\nPlease enter a book to view Krikus' full review on it:"
     input = gets.chomp
     book = Book.all[input.to_i-1]
