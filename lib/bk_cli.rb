@@ -7,9 +7,9 @@ class CLI
     puts "Welcome to the reviews for Today's Best Sellers!"
     puts "Here is a list of the books on today's Best Sellers:"
     puts " "
-    Scraper.scrape_reviews
+    Scraper.scrape_reviews unless !Book.all.empty?
    
-    Book.each.with_index(1) do |book, i|
+    Book.all.each.with_index(1) do |book, i|
       puts "#{i}: #{book.title}"
     end
     menu
@@ -21,8 +21,8 @@ class CLI
     book = Book.all[input.to_i-1]
     
     if !book 
+      puts "\nSorry, this book is not on the list for today! Please enter a valid option from the list below.\n\n"
       run
-      puts "\nSorry, this book is not on the list for today! Please enter a valid option from the list above."
     else 
       Scraper.scrape_book_review(book)
       puts "Here are the review details for #{book.title}:"

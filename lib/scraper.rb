@@ -1,5 +1,4 @@
 class Scraper
-#require "dict/cli/version"
 require "open-uri"
 require "nokogiri"
 require "pry"
@@ -7,26 +6,17 @@ require "pry"
 KIRKUS_URL = "https://www.kirkusreviews.com"
   
   def self.scrape_reviews
-    books = []
   
     html = open(KIRKUS_URL)
     doc = Nokogiri::HTML(html)
-    book1 = doc.css(".cover-image")[0].values[2]
-    books << book1
-    book2 = doc.css(".cover-image")[1].values[2]
-    books << book2
-    book3 = doc.css(".cover-image")[2].values[2]
-    books << book3
-    book4 = doc.css(".cover-image")[3].values[2]
-    books << book4
-    book5 = doc.css(".cover-image")[4].values[2]
-    books << book5
-    book6 = doc.css(".cover-image")[5].values[2]
-    books << book6
-    url = doc.css(".critics-picks-item-img-ctr a").attr("href").value
-  
-    books.map{|bookr, i| Book.new(bookr, url)}
- 
+    
+    book_nodes = doc.css(".critics-picks-item-ctr")
+    book_nodes.each do |book_node|
+      title = book_node.css('.cover-image').first.values[2]
+      title = title.split('Cover art for ').last
+      url = book_node.css('a').attr('href').value
+      Book.new(title, url )
+    end
   end
   
   def self.scrape_book_review(book)
