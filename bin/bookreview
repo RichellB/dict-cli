@@ -1,5 +1,5 @@
-require "../lib/bk_cli.rb"
-require "../lib/book.rb"
-require "../lib/scraper.rb"
+require_relative "../lib/bk_cli.rb"
+require_relative "../lib/book.rb"
+require_relative "../lib/scraper.rb"
 
 CLI.new.run
